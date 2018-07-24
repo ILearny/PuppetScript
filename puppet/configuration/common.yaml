@@ -1,2 +1,19 @@
 HttpPort: '80'
 HttpsPort: '443'
+
+WebRootFolder: 'D:\Application'
+WebLogFolder: 'D:\LogFiles'
+BatchRootFolder: 'D:\Batch'
+
+ImportUser: 'IND\KOTA_ADMIN_USERS'
+
+AdminUsersDeployment: 
+ - 'IND\kota_deployment'
+
+AdminUsersBatch:
+ - 'IND\kota_batch'
+
+AdminUsersIIS:
+ - 'EUR\KOTA_ADMIN'
+ - 'EUR\KOTA_MAINTENANCE_USERS'
+
