@@ -1,0 +1,2 @@
+HttpPort: '80'
+HttpsPort: '443'
