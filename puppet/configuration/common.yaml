@@ -17,3 +17,5 @@ AdminUsersIIS:
  - 'EUR\KOTA_ADMIN'
  - 'EUR\KOTA_MAINTENANCE_USERS'
 
+SoftwarePath: 'D:\Tools\resources'
+ToolsPath: 'D:\Tools'
