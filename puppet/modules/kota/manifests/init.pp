@@ -1,5 +1,5 @@
 class kota {
-  # -------------------------------------------------
+  	# -------------------------------------------------
 	# Check environment & define common variables
 	# -------------------------------------------------
 
@@ -21,12 +21,15 @@ class kota {
 	}
   
   
-  #------------------------
+  	$resourcespath = hiera('SoftwarePath')
+	$toolspath = hiera('ToolsPath')
+	
+  	#------------------------
 	# Create all folders
 	#------------------------
-  $webrootpath = hiera('WebRootFolder')
+  	$webrootpath = hiera('WebRootFolder')
 	$weblogpath = hiera('WebLogFolder')
-  $batchpath = hiera('BatchRootFolder')
+  	$batchpath = hiera('BatchRootFolder')
 	$importfileuser = hiera('ImportUser')
 
 
@@ -34,28 +37,42 @@ class kota {
 		environment => $environment,
 		webrootfolder => $webrootpath,
 		weblogfolder => $weblogpath,
-    batchfolder => $batchpath,
+    		batchfolder => $batchpath,
 		importuser => $importfileuser,
 	}
   
   
-  #------------------------
+  	#------------------------
 	# Add all users to groups
 	#------------------------
-  $admin_deployment_users=hiera('AdminUsersDeployment')
+  	$admin_deployment_users=hiera('AdminUsersDeployment')
 	$admin_batch_users=hiera('AdminUsersBatch')
 	$admin_iis_users=hiera('AdminUsersIIS')
   
-  class { 'kota::groups':
+  	class { 'kota::groups':
 		deployment_users => $admin_deployment_users,
 		batch_users => $admin_batch_users,
 		iis_users => $admin_iis_users,
 	}
   
-  #-----------------------------
+  	#-----------------------------
 	# Enable all windows features
 	#-----------------------------
 	include kota::features
   
+  
+  	#------------------------
+	# Install all softwares
+	#------------------------
+	class { 'kota::softwares':
+		environment => $environment,
+		sourcepath => $resourcespath,
+		destinationpath => $toolspath,
+	}
+	
+	#-----------------------------
+	# Set server configuration
+	#-----------------------------
+
   
 }
