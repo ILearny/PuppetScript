@@ -1,0 +1,8 @@
+---
+:backends: yaml
+:hierarchy:
+  - param%{environment}
+  - common
+:logger: console
+:yaml:
+  :datadir: "%{settings::confdir}/configuration"
