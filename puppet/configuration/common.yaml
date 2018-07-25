@@ -2,6 +2,7 @@ HttpPort: '80'
 HttpsPort: '443'
 
 WebRootFolder: 'D:\Application'
+WebAppFolder: 'D:\Application\Kota'
 WebLogFolder: 'D:\LogFiles'
 BatchRootFolder: 'D:\Batch'
 
