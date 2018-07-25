@@ -23,6 +23,7 @@ class kota {
   
   	$resourcespath = hiera('SoftwarePath')
 	$toolspath = hiera('ToolsPath')
+	$webapppath = hiera('WebAppFolder')
 	
   	#------------------------
 	# Create all folders
@@ -73,6 +74,24 @@ class kota {
 	#-----------------------------
 	# Set server configuration
 	#-----------------------------
+	$http_port = hiera('HttpPort')
+	$https_port = hiera('HttpsPort')
+	if (hiera('Certificate') == '') {
+		$Certificate = $::certificate
+	}
+	else {
+		$Certificate = hiera('Certificate')
+	}
+	
 
+	class { 'tomcat::configuration':
+		environment => $environment,
+		weblog_path => $weblogpath,
+		webroot_path => $webrootpath,
+		website_path => $webapppath,
+		website_http_port => $http_port,
+		website_https_port => $https_port,
+		certificate_thumbprint => $Certificate,
+	}
   
 }
