@@ -19,3 +19,5 @@ AdminUsersIIS:
 
 SoftwarePath: 'D:\Tools\resources'
 ToolsPath: 'D:\Tools'
+
+Certificate: ''
